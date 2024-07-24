@@ -54,7 +54,7 @@
   padding:2rem;
   background-color: beige;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 4fr 1fr;
 }
 
 .nav-link{
