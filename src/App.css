@@ -3,8 +3,10 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display:flex;
+  flex-direction: column;
 }
-
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +41,22 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+.navbar{
+  background-color: white;
+  margin-bottom:0;
+}
+
+.navlinks{
+  /* margin:auto;
+  column-gap: 3rem; */
+  padding:2rem;
+  background-color: beige;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.nav-link{
+  margin:1rem;
 }
