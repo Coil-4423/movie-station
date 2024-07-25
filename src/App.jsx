@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Home } from './pages/Home'
+import Home  from './pages/Home'
 import About from './pages/About'
 import { Favorite } from './pages/Favorite'
 import Single from './pages/Single'
