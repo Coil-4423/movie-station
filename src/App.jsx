@@ -3,7 +3,7 @@ import './App.css'
 import Home  from './pages/Home'
 import About from './pages/About'
 import { Favorite } from './pages/Favorite'
-import Single from './pages/Single'
+import SingleMovie from './pages/SingleMovie'
 import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 
@@ -16,8 +16,8 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/favorite' element={<Favorite />}></Route>
-        <Route path='/single' element={<Single />}></Route>
-      </Routes>
+        <Route path="/movie/:id" element={<SingleMovie />} />      
+        </Routes>
     </>
   )
 }

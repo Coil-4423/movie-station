@@ -26,7 +26,7 @@ const getIndex = (arr, id) => {
 };
 
 export const favMoviesSlice = createSlice({
-  name: 'movies',
+  name: 'detailed',
   initialState,
   reducers: {
     addMovies: (state, action) => {
