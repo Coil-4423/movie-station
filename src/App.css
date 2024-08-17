@@ -1,25 +1,77 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
   display:flex;
   flex-direction: column;
 }
 
-.movie-item{
-  /* display:flex; */
+body{
+  background-color: rgb(24, 24, 24);
+  margin:0 auto;
+  color:white;
+}
+
+
+.movies{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-detail{
+  img{
+    width: 2rem;
+    /* background-color: black; */
+    /* color:azure */
+  }
+  button{
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+
+/* .movie-item{
+  display:flex;
   margin:1rem;
   color:white;
   font-size: 2rem;
   background-color: gray;
-}
+} */
 
 .movies-container{
   /* display: flex; */
   display:grid;
-  grid-template-columns: auto auto auto auto;
+  @media only screen and (min-width: 720px){
 
+    grid-template-columns: auto auto auto auto;
+  }
+  @media only screen and (min-width: 480px) and (max-width: 720px){
+
+    grid-template-columns: auto auto auto;
+  }
+
+  @media only screen and (min-width: 400px) and (max-width: 480px){
+
+    grid-template-columns: auto auto;
+  }
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-movie{
+  width: 500px;
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: auto 10rem;
 }
 
 
@@ -42,12 +94,57 @@
 }
 
 .movie-item{
-  width:8rem;
+  /* width:8rem; */
+  /* justify-self: center; */
+  width:9rem;
+  margin:1rem;
+  background-color: rgb(50, 50, 50);
+
+  /* padding:1rem; */
   /* width:300px;
   padding:1rem;
   margin:2rem; */
-  img{
-    width:100%;
+  .movie-poster{
+    width:9rem;
+    height: 16rem;
+    /* width:100%; */
+    object-fit: cover;
   }
+  img{
+    width: 2rem;
+    /* background-color: black; */
+    /* color:azure */
+  }
+
+  button{
+    background-color: transparent;
+    border: 0;
+  }
+  
+  h3{
+    font-size: 0.75rem;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      line-height: 1.2em; /* Adjust based on your font size */
+      max-height: 2.4em; /* Should be line-height * 2 */
+      margin-top:0;
+  }
+
+  .more-info-link{
+    color: rgb(117, 216, 255);
+  }
+}
+
+.movie-info{
+  padding:1rem;
+}
+
+.favMovies{
+  display: flex;
+  flex-direction: column;
+  width:10rem;
 }
 
