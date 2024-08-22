@@ -15,6 +15,8 @@ export const Favorite = () => {
         {favMovies.length > 0 ? (
           favMovies.map((movie) => (
             <div key={movie.id} className='movie-item'>
+            <div className="movie-img-wrapper">
+
               <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} className='movie-poster'/>
               <div className="movie-info">
               <h3>{movie.title}</h3>
@@ -31,6 +33,7 @@ export const Favorite = () => {
               <Link to={`/movie/${movie.id}`} className="more-info-link">
                 More Info
               </Link>
+              </div>
             </div>
             </div>
           ))
