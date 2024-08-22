@@ -56,34 +56,57 @@ const Home = () => {
   return (
     <div className="movies">
       <div className="movies-section">
-        <button onClick={() => setMovieSection("Now Playing")}>
+        <button
+          onClick={() => setMovieSection("Now Playing")}
+          className={movieSection === "Now Playing" ? "active" : ""}
+        >
           Now Playing
         </button>
-        <button onClick={() => setMovieSection("Top Rated")}>Top Rated</button>
-        <button onClick={() => setMovieSection("Upcoming")}>Upcoming</button>
-        <button onClick={() => setMovieSection("Popular")}>Popular</button>
-        <h2>{movieSection}</h2>
+        <button
+          onClick={() => setMovieSection("Top Rated")}
+          className={movieSection === "Top Rated" ? "active" : ""}
+        >
+          Top Rated
+        </button>
+        <button
+          onClick={() => setMovieSection("Upcoming")}
+          className={movieSection === "Upcoming" ? "active" : ""}
+        >
+          Upcoming
+        </button>
+        <button
+          onClick={() => setMovieSection("Popular")}
+          className={movieSection === "Popular" ? "active" : ""}
+        >
+          Popular
+        </button>
+        {/* <h2>{movieSection}</h2> */}
       </div>
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              className="movie-poster"
-            />
-            <div className="movie-info">
-              <h3>{movie.title}</h3>
-              <button onClick={() => handleFavorite(movie)}>
-                {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
-                  <img src="remove-from-favorites-icon.svg" alt="unfavorite" />
-                ) : (
-                  <img src="add-to-favorites-icon.svg" alt="favorite" />
-                )}
-              </button>
-              <Link to={`/movie/${movie.id}`} className="more-info-link">
-                More Info
-              </Link>
+            <div className="movie-img-wrapper">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="movie-poster"
+              />
+              <div className="movie-info">
+                <h3>{movie.title}</h3>
+                <button onClick={() => handleFavorite(movie)}>
+                  {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
+                    <img
+                      src="remove-from-favorites-icon.svg"
+                      alt="unfavorite"
+                    />
+                  ) : (
+                    <img src="add-to-favorites-icon.svg" alt="favorite" />
+                  )}
+                </button>
+                <Link to={`/movie/${movie.id}`} className="more-info-link">
+                  More Info
+                </Link>
+              </div>
             </div>
           </div>
         ))}
