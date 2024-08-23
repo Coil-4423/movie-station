@@ -1,0 +1,15 @@
+.favbutton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .favorite-icon {
+    fill: gray; /* Default color */
+    transition: fill 0.3s ease; /* Smooth transition */
+  }
+  
+  .favbutton:hover .favorite-icon {
+    fill: red; /* Change to desired color on hover */
+  }
+  

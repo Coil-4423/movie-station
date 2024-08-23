@@ -1,0 +1,29 @@
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 8px 0px 8px 10px; /* Added padding-right for the button */
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #1c1c1e;
+  color: white;
+  position: relative; /* Added for positioning the button */
+}
+
+/* X Button inside Search Bar */
+.clear-search-btn {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Show the X button when there is a search query */
+.search-input:not(:placeholder-shown) ~ .clear-search-btn {
+  display: block;
+}

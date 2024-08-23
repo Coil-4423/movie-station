@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [movieSection, setMovieSection] = useState("Now Playing"); // Now Playing, Popular, Top Rated, Upcoming
   const [movies, setMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const dispatch = useDispatch();
   const favMovies = useSelector((state) => state.favMovie.movies);
 
@@ -20,6 +22,8 @@ const Home = () => {
         url = "https://api.themoviedb.org/3/movie/upcoming";
       } else if (movieSection === "Popular") {
         url = "https://api.themoviedb.org/3/movie/popular";
+      } else {
+        url = "https://api.themoviedb.org/3/discover/movie";
       }
 
       try {
@@ -29,7 +33,6 @@ const Home = () => {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`,
           },
         });
-
         setMovies(response.data.results);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -38,6 +41,43 @@ const Home = () => {
 
     fetchData();
   }, [movieSection]);
+
+  useEffect(() => {
+    const fetchAllMovies = async () => {
+      let allMovies = [];
+      let page = 1;
+      let totalPages = 1; // Placeholder, will update after first fetch
+
+      while (page <= totalPages) {
+        try {
+          const response = await axios.get("https://api.themoviedb.org/3/discover/movie", {
+            params: {
+              language: "en-US",
+              page: page,
+              api_key: "<your_api_key>"
+            },
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`,
+            },
+          });
+
+          allMovies = allMovies.concat(response.data.results);
+          console.log(allMovies);
+          totalPages = response.data.total_pages; // Update total pages after first request
+          page += 1; // Move to the next page
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          break;
+        }
+      }
+
+      setMovies(allMovies);
+    };
+
+    if (searchQuery) {
+      fetchAllMovies();
+    }
+  }, [searchQuery]);
 
   useEffect(() => {
     localStorage.setItem("movies", JSON.stringify(favMovies));
@@ -52,6 +92,10 @@ const Home = () => {
       console.log("Removed from favorites:", movie);
     }
   };
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="movies">
@@ -80,10 +124,23 @@ const Home = () => {
         >
           Popular
         </button>
-        {/* <h2>{movieSection}</h2> */}
+        <button
+          onClick={() => setMovieSection("All")}
+          className={movieSection === "All" ? "active" : ""}
+        >
+          All
+        </button>
+        {/* Add a search input */}
+        <input
+          type="text"
+          placeholder="Search movies..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-bar"
+        />
       </div>
       <div className="movies-container">
-        {movies.map((movie) => (
+        {filteredMovies.map((movie) => (
           <div key={movie.id} className="movie-item">
             <div className="movie-img-wrapper">
               <img
