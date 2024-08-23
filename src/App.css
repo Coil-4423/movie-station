@@ -25,6 +25,8 @@ body{
   display: flex;
   flex-direction: column;
   text-align: left;
+  padding:0 1rem 0 1rem;
+  margin:0 1rem 0 1rem;
   /* justify-content: left; */
   /* align-items: center; */
   img{
@@ -46,6 +48,12 @@ body{
   background-color: transparent;
   border: 0;
 }
+.title-overview{
+  h2{
+    font-size: 2rem;
+    margin:0 auto;
+  }
+}
 
 
 .casts{
@@ -56,6 +64,32 @@ body{
 
 .infos{
   text-align: left;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+
+}
+.info{
+  display:flex;
+  /* justify-content: ; */
+  align-items: center;
+  margin-right:1rem
+}
+
+.genres{
+  display: flex;
+  align-items: center;
+  p{
+    margin-left:1rem
+  }
+}
+
+.casts{
+  display: flex;
+  align-items: center;
+  p{
+    margin-left:1rem
+  }
 }
 
 .overview{
@@ -109,7 +143,8 @@ section{
 
 .single-movie{
   /* width: 500px; */
-  margin: 2rem;
+  /* margin: 2rem; */
+  padding: 2rem;
   display: grid;
   grid-template-columns: auto auto;
 }
@@ -293,6 +328,7 @@ section{
   top: 0;
   left: 0;
   overflow: hidden;
+  display: flex;
 }
 
 .star-rating-top {
@@ -303,6 +339,7 @@ section{
   white-space: nowrap;
   overflow: hidden;
   width: 0%;
+  display: flex;
 }
 
 .star-rating span {

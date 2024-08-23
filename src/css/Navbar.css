@@ -7,7 +7,7 @@ body {
   
   /* Navbar styles */
   .navbar {
-    background-color: #000;
+    background-color: #00000011;
     height: 80px;
     display: flex;
     justify-content: start;
@@ -43,7 +43,7 @@ body {
   }
   
   .nav-menu {
-    background-color: #000;
+    background-color: #5b5b5b;
     width: 250px;
     height: 100vh;
     position: fixed;
@@ -61,12 +61,14 @@ body {
   }
   
   /* Nav menu items */
-  .nav-menu-items,
-  .nav-text {
+  .nav-menu-items
+   {
     width: 100%;
     list-style: none;
     height: 60px;
-    padding: 8px 0 8px 16px;
+    padding:12px 0 8px 0;
+    display: flex;
+    flex-direction: column;
   }
   
   .navbar-toggle,
@@ -81,6 +83,8 @@ body {
     font-size: 18px;
     width: 100%;
     display: block;
+    padding:1rem 1rem 1rem 0;
+    padding-right: 0px;
   }
   
   .nav-text a:hover {
@@ -94,8 +98,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(57, 57, 57, 0.212);
+    backdrop-filter: blur(3px);
     z-index: 1002;
     display: none;
     transition: opacity 0.3s ease;
@@ -103,72 +107,38 @@ body {
   
   .overlay.active {
     display: block;
+    margin:0 auto;
   }
   
-  /* Search Input and Results Styling */
-  .search-container {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    background-color: #1c1c1e;
-    color: white;
-  }
-  
-  .search-input::placeholder {
-    color: #b3b3b3;
-  }
-  
-  .search-results {
-    position: absolute;
-    top: 36px;
-    left: 0;
-    width: 100%;
-    background-color: #1c1c1e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1004;
-    padding: 10px;
-  }
-  
-  .search-result-item {
-    padding: 10px;
-    border-bottom: 1px solid #3a3a3c;
-    color: white;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .search-result-item:hover {
-    background-color: #2a2a2c;
-  }
-  
-  .search-result-item span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-grow: 1;
-  }
-  
-  .search-result-item i {
-    margin-right: 10px;
-  }
-  
+
   /* Hide the search overlay when the sidebar is active */
   .nav-menu.active ~ .overlay,
   .nav-menu.active ~ .search-container ~ .overlay {
     display: none;
+  }
+
+  /* Adjusting the position and size of the 'X' icon in the menu bar */
+.menu-bars {
+    background: none;        /* Remove any background color */
+    border: none;            /* Remove the border */
+    font-size: 24px;         /* Adjust the size of the icon */
+    cursor: pointer;         /* Change cursor to pointer on hover */
+    color: #fff;             /* Set the color of the icon */
+    /* position: absolute;      
+    top: 20px;           
+    left: 20px;           
+    width: 40px;             
+    height: 40px;             */
+    display: flex;           /* Use flexbox for alignment */
+    justify-content: center; /* Center the icon horizontally */
+    align-items: center;     /* Center the icon vertically */
+  }
+  
+  /* When the sidebar is active */
+  .navbar-toggle .menu-bars {
+    font-size: 24px;         /* Increase the size of the 'X' when active */
+/* margin-top:2px;        */
+/* padding:2px; */
+margin-left:20px;
   }
   

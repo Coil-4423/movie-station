@@ -19,7 +19,7 @@
   background: none;
   border: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -27,3 +27,65 @@
 .search-input:not(:placeholder-shown) ~ .clear-search-btn {
   display: block;
 }
+
+  /* Search Input and Results Styling */
+  .search-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #1c1c1e;
+    color: white;
+  }
+  
+  .search-input::placeholder {
+    color: #b3b3b3;
+  }
+  
+  .search-results {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 100%;
+    background-color: #1c1c1e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1004;
+    padding: 10px;
+  }
+  
+  .search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #3a3a3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .search-result-item:hover {
+    background-color: #2a2a2c;
+  }
+  
+  .search-result-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+  }
+  
+  .search-result-item i {
+    margin-right: 10px;
+  }
+  

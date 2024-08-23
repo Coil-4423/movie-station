@@ -124,20 +124,20 @@ const Home = () => {
         >
           Popular
         </button>
-        <button
+        {/* <button
           onClick={() => setMovieSection("All")}
           className={movieSection === "All" ? "active" : ""}
         >
           All
-        </button>
+        </button> */}
         {/* Add a search input */}
-        <input
+        {/* <input
           type="text"
           placeholder="Search movies..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="search-bar"
-        />
+        /> */}
       </div>
       <div className="movies-container">
         {filteredMovies.map((movie) => (

@@ -22,20 +22,19 @@ const Navbar = () => {
         method: 'GET',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer YOUR_API_KEY',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0',
         },
       };
 
       try {
         const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`, options);
         const data = await response.json();
-        setSearchResults(data.results || []); // Ensure searchResults is always an array
+        setSearchResults(data.results);
       } catch (err) {
         console.error(err);
-        setSearchResults([]); // Reset results in case of error
       }
     } else {
-      setSearchResults([]); // Reset results if query is too short
+      setSearchResults([]);
     }
   };
 
