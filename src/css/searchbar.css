@@ -1,56 +1,80 @@
+/* Search Container */
+.search-container {
+    display: none;
+    position: relative;
+    max-width: 450px;
+    /* margin: 0 auto; */
+    display: flex;
+    align-items: center;
+    background-color: #1c1c1e;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    /* padding: 0 10px; Add padding inside the container */
+}
+
+.search-container.active {
+    display: flex;
+}
+
+/* Input Container to hold the search input and cancel button */
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure input container takes full width */
+}
+
 /* Search Input */
 .search-input {
-  width: 100%;
-  padding: 8px 0px 8px 10px; /* Added padding-right for the button */
-  font-size: 16px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  background-color: #1c1c1e;
-  color: white;
-  position: relative; /* Added for positioning the button */
-}
-
-/* X Button inside Search Bar */
-.clear-search-btn {
-  position: absolute;
-  top: 50%;
-  right: 0px;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Show the X button when there is a search query */
-.search-input:not(:placeholder-shown) ~ .clear-search-btn {
-  display: block;
-}
-
-  /* Search Input and Results Styling */
-  .search-container {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 8px;
+    width: 100%; /* Take up the full width within the input-container */
+    padding: 6px;
     font-size: 16px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    background-color: #1c1c1e;
+    background-color: transparent;
+    border: none;
     color: white;
-  }
-  
-  .search-input::placeholder {
+}
+
+.search-input:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+/* Cancel Search Button */
+.clear-search-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Search Icon */
+.search-icon {
+    background-color: rgba(128, 128, 128, 0);
+    border:none;
+    color: white;
+    font-size: 24px;
+    padding: 0.25rem;
+    cursor: pointer;
+    z-index: 1003;
+}
+.search-icon:hover {
+    transition: 0.25s;
+    /* font-size: 32px; */
+    color:rgb(148, 239, 255)
+}
+
+.search-icon.active {
+    display: none;
+    background-color: red;
+    color: rgb(255, 0, 0);
+}
+
+/* Search Input and Results Styling */
+.search-input::placeholder {
     color: #b3b3b3;
-  }
-  
-  .search-results {
+}
+
+.search-results {
     position: absolute;
     top: 36px;
     left: 0;
@@ -58,13 +82,16 @@
     background-color: #1c1c1e;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    max-height: 300px;
+    /* max-height: 300px; */
     overflow-y: auto;
     z-index: 1004;
-    padding: 10px;
-  }
-  
-  .search-result-item {
+    /* width:100%; */
+    min-width:250px;
+    /* max-width: 400px; */
+    /* padding: 10px; */
+}
+
+.search-result-item {
     padding: 10px;
     border-bottom: 1px solid #3a3a3c;
     color: white;
@@ -72,20 +99,58 @@
     align-items: center;
     cursor: pointer;
     text-decoration: none;
-  }
-  
-  .search-result-item:hover {
+}
+
+.search-result-item:hover {
     background-color: #2a2a2c;
-  }
-  
-  .search-result-item span {
+}
+
+.search-result-item span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     flex-grow: 1;
-  }
-  
-  .search-result-item i {
+}
+
+.search-result-item i {
     margin-right: 10px;
-  }
-  
+}
+
+/* Overlay styles for blurring background when menu is active */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1002;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Cancel Search Button (No specific changes needed here) */
+.cancel-search {
+    margin-left: 10px; /* Ensure proper spacing between input and button */
+    border-radius: 15px;
+}
+.cancel-search:hover{
+    transition: 0.25s;
+    background-color: #b3b3b3;
+}
+.search{
+    display: none;
+}
+
+.search.active {
+    transition:1s;
+
+    display: flex;
+}
+

@@ -19,6 +19,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* width:100%; */
 }
 
 .movie-detail{
@@ -274,42 +275,81 @@ section{
   text-decoration: underline;
   font-size: 14px;
 }
-.movies-section {
+
+.movies-section-wrapper {
+  position: relative; /* Fix the position */
+  top:0; /* Stick to the top of the viewport */
+  left: 0; /* Stick to the left edge */
+  width: 100%; /* Make it span the entire width of the screen */
+  background-color: rgb(24, 24, 24); /* Ensure it has a background color to overlay the content behind */
+  z-index: 1000; /* Ensure it stays above other content */
+  padding: 0 0; /* Optional padding for spacing */
+  white-space: nowrap; /* Prevent line breaks in button text */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
   display: flex;
-  align-items: center;
-  gap: 10px; /* Adjust the gap between buttons */
+}
+
+.movies-section-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+
+
+.movies-section {
+  display: inline-flex; /* Use inline-flex to allow wrapping */
+  gap: 10px; /* Adjust gap between buttons */
+  padding: 10px 0;
+  white-space: nowrap; /* Ensure text doesn't wrap */
+  /* justify-content: flex-start; */
+  margin-left:2rem;
+}
+
+/* Custom scrollbar styles for WebKit browsers */
+.movies-section::-webkit-scrollbar {
+  height: 8px; 
+}
+
+.movies-section::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 10px; 
+}
+
+.movies-section::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 .movies-section button {
-  background: none;
+  display: inline-block;
+  background-color: #333; /* Background color similar to YouTube */
+  color: white;
   border: none;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px 20px;
   cursor: pointer;
-  color: #ffffff;
-  position: relative; /* Needed for the separator */
+  border-radius: 20px; /* Rounded buttons similar to YouTube */
+  white-space: nowrap; /* Ensure text doesn't wrap */
 }
 
+/* Active button styles */
 .movies-section button.active {
+  background-color: white; /* Active button background color */
+  color: black; /* Active button text color */
   font-weight: bold;
-  text-decoration: underline;
-  color: #007BFF; /* Optional: To differentiate the active section */
 }
 
 .movies-section button:not(.active):hover {
-  color: #007BFF;
+  background-color: #555; /* Slightly lighter background on hover */
 }
 
-/* Add vertical separators */
-.movies-section button:not(:last-child)::after {
-  content: "";
+.right-fade {
   position: absolute;
-  top: 50%;
-  right: -5px; /* Adjust this to control the separator position */
-  transform: translateY(-50%);
-  width: 1px;
-  height: 20px; /* Adjust the height of the separator */
-  background-color: #ffffff; /* Separator color */
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0)); /* Gradient fade effect */
+  pointer-events: none; /* Allow clicks to pass through */
 }
 
 
@@ -345,4 +385,39 @@ section{
 .star-rating span {
   display: inline-block;
   margin-right: 4px; /* Consistent spacing between stars */
+}
+
+.blurred-content {
+  filter: blur(8px);
+  pointer-events: none; /* Disable interaction with blurred content */
+  transition: filter 0.3s ease;
+}
+
+.search.active + .blurred-content {
+  pointer-events: none;
+}
+
+.search.active {
+  z-index: 9999;
+}
+
+.navbar {
+  z-index: 10000; /* Ensure navbar is above everything else */
+}
+
+.select-order{
+  padding: 0.5rem;
+}
+
+.pagination button.active {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Optional: rounded corners */
+  padding: 5px 10px; /* Optional: padding */
+  cursor: default; /* Change cursor to default */
+}
+
+.fav{
+  font-size: 24px;
 }

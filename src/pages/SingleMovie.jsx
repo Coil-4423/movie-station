@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { addMovies, deleteMovies } from '../features/favMoviesSlice';
 import StarRating from '../components/StarRating'; // Import the StarRating component
+import { FaCheck } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa";
 
 const SingleMovie = () => {
   const { id } = useParams(); // Get the movie ID from the URL
@@ -127,20 +129,17 @@ const SingleMovie = () => {
                 {/* <b>Country:</b> */}
                 <p>{movie.origin_country}</p>
               </div>
-              <button
+              <div
             onClick={() => handleFavorite(movie)}
             style={{ marginTop: '20px' }}
             className="favbutton"
           >
             {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
-              <img
-                src="../public/remove-from-favorites-icon.svg"
-                alt="unfavorite"
-              />
+                                  <FaCheck />
             ) : (
-              <img src="../public/add-to-favorites-icon.svg" alt="favorite" />
+              <FaPlus/>
             )}
-          </button>
+          </div>
             </div>
             <div className="genres">
                 <b>Genres:</b>

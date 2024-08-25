@@ -3,34 +3,30 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { deleteMovies, addMovies } from "../features/favMoviesSlice";
 import { Link } from "react-router-dom";
+import { FaCheck } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa";
+import { CiCirclePlus, CiCircleCheck } from "react-icons/ci";
 
-const Home = () => {
-  const [movieSection, setMovieSection] = useState("Now Playing"); // Now Playing, Popular, Top Rated, Upcoming
+const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
-  const [allMovies, setAllMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const dispatch = useDispatch();
   const favMovies = useSelector((state) => state.favMovie.movies);
 
   useEffect(() => {
     const fetchData = async () => {
       let url = "https://api.themoviedb.org/3/movie/now_playing";
-
       if (movieSection === "Top Rated") {
         url = "https://api.themoviedb.org/3/movie/top_rated";
       } else if (movieSection === "Upcoming") {
         url = "https://api.themoviedb.org/3/movie/upcoming";
       } else if (movieSection === "Popular") {
         url = "https://api.themoviedb.org/3/movie/popular";
-      } else {
-        url = "https://api.themoviedb.org/3/discover/movie";
       }
-
       try {
         const response = await axios.get(url, {
           params: { language: "en-US" },
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`, // Replace with your token
           },
         });
         setMovies(response.data.results);
@@ -42,47 +38,6 @@ const Home = () => {
     fetchData();
   }, [movieSection]);
 
-  useEffect(() => {
-    const fetchAllMovies = async () => {
-      let allMovies = [];
-      let page = 1;
-      let totalPages = 1; // Placeholder, will update after first fetch
-
-      while (page <= totalPages) {
-        try {
-          const response = await axios.get("https://api.themoviedb.org/3/discover/movie", {
-            params: {
-              language: "en-US",
-              page: page,
-              api_key: "<your_api_key>"
-            },
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`,
-            },
-          });
-
-          allMovies = allMovies.concat(response.data.results);
-          console.log(allMovies);
-          totalPages = response.data.total_pages; // Update total pages after first request
-          page += 1; // Move to the next page
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          break;
-        }
-      }
-
-      setMovies(allMovies);
-    };
-
-    if (searchQuery) {
-      fetchAllMovies();
-    }
-  }, [searchQuery]);
-
-  useEffect(() => {
-    localStorage.setItem("movies", JSON.stringify(favMovies));
-  }, [favMovies]);
-
   const handleFavorite = (movie) => {
     if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
       dispatch(addMovies(movie));
@@ -93,13 +48,10 @@ const Home = () => {
     }
   };
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   return (
     <div className="movies">
-      <div className="movies-section">
+      <div className="movies-section-wrapper">
+        <div className="movies-section">
         <button
           onClick={() => setMovieSection("Now Playing")}
           className={movieSection === "Now Playing" ? "active" : ""}
@@ -124,23 +76,13 @@ const Home = () => {
         >
           Popular
         </button>
-        {/* <button
-          onClick={() => setMovieSection("All")}
-          className={movieSection === "All" ? "active" : ""}
-        >
-          All
-        </button> */}
-        {/* Add a search input */}
-        {/* <input
-          type="text"
-          placeholder="Search movies..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="search-bar"
-        /> */}
+      <div className="right-fade"></div> 
+
       </div>
+      </div>
+      
       <div className="movies-container">
-        {filteredMovies.map((movie) => (
+        {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
             <div className="movie-img-wrapper">
               <img
@@ -150,16 +92,20 @@ const Home = () => {
               />
               <div className="movie-info">
                 <h3>{movie.title}</h3>
-                <button onClick={() => handleFavorite(movie)}>
-                  {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
-                    <img
-                      src="remove-from-favorites-icon.svg"
-                      alt="unfavorite"
-                    />
-                  ) : (
-                    <img src="add-to-favorites-icon.svg" alt="favorite" />
-                  )}
-                </button>
+                <div onClick={() => handleFavorite(movie)} className="fav">
+                  {favMovies.some((favMovie) => favMovie.id === movie.id) ? 
+                    // <img
+                    //   src="remove-from-favorites-icon.svg"
+                    //   alt="unfavorite"
+                    // />
+                    <FaCheck />
+                    // <CiCirclePlus />
+                   : 
+                    // <img src="add-to-favorites-icon.svg" alt="favorite" />
+                    <FaPlus/>
+                    // <CiCircleCheck />
+                  }
+                </div>
                 <Link to={`/movie/${movie.id}`} className="more-info-link">
                   More Info
                 </Link>
