@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { CiCirclePlus, CiCircleCheck } from "react-icons/ci";
+import { FaInfoCircle } from "react-icons/fa";
 
 const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
@@ -92,23 +93,19 @@ const Home = ({ movieSection, setMovieSection }) => {
               />
               <div className="movie-info">
                 <h3>{movie.title}</h3>
-                <div onClick={() => handleFavorite(movie)} className="fav">
+                <div className="fav-link">
+                  <div onClick={() => handleFavorite(movie)} className="fav">
                   {favMovies.some((favMovie) => favMovie.id === movie.id) ? 
-                    // <img
-                    //   src="remove-from-favorites-icon.svg"
-                    //   alt="unfavorite"
-                    // />
                     <FaCheck />
-                    // <CiCirclePlus />
                    : 
-                    // <img src="add-to-favorites-icon.svg" alt="favorite" />
                     <FaPlus/>
-                    // <CiCircleCheck />
                   }
                 </div>
                 <Link to={`/movie/${movie.id}`} className="more-info-link">
-                  More Info
+                  <FaInfoCircle/>
                 </Link>
+                </div>
+                
               </div>
             </div>
           </div>

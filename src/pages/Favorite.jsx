@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
+import { FaInfoCircle } from "react-icons/fa";
+
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
 export const Favorite = () => {
@@ -142,21 +144,23 @@ export const Favorite = () => {
                 />
                 <div className="movie-info">
                   <h3>{movie.title}</h3>
-                  <div
-                    onClick={() => {
-                      dispatch(deleteMovies({ id: movie.id }));
-                    }}
-                    className="fav"
-                  >
-                    {/* <img src="remove-from-favorites-icon.svg" alt="unfavorite" /> */}
-                    {/* <FaCheck/> */}
-                    <span title="Remove from favorites">
-                      <IoIosRemoveCircleOutline />
-                    </span>
+                  <div className="fav-link">
+                    <div
+                      onClick={() => {
+                        dispatch(deleteMovies({ id: movie.id }));
+                      }}
+                      className="fav"
+                    >
+                      {/* <img src="remove-from-favorites-icon.svg" alt="unfavorite" /> */}
+                      {/* <FaCheck/> */}
+                      <span title="Remove from favorites">
+                        <IoIosRemoveCircleOutline />
+                      </span>
+                    </div>
+                    <Link to={`/movie/${movie.id}`} className="more-info-link">
+                      <FaInfoCircle />
+                    </Link>
                   </div>
-                  <Link to={`/movie/${movie.id}`} className="more-info-link">
-                    More Info
-                  </Link>
                 </div>
               </div>
             </div>

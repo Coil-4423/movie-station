@@ -252,6 +252,7 @@ body {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  
 }
 
 .scroll-to-top {

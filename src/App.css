@@ -130,8 +130,17 @@ body{
   }
 
   @media only screen and (min-width: 400px) and (max-width: 480px){
-
     grid-template-columns: auto auto;
+  }
+
+  @media only screen and (max-width:400px) {
+    grid-template-columns: auto auto;
+    .movie-item{
+      /* width:4rem; */
+    }
+    .movie-poster{
+      width:4rem;
+    }
   }
 }
 
@@ -170,9 +179,10 @@ section{
 }
 
 .movie-item{
+  display: flex;
   /* width:8rem; */
   /* justify-self: center; */
-  width:9rem;
+  /* width:9rem; */
   margin:1rem;
   background-color: rgb(50, 50, 50);
 
@@ -182,9 +192,15 @@ section{
   margin:2rem; */
   .movie-poster{
     width:9rem;
-    height: 16rem;
+    /* height: 16rem; */
     /* width:100%; */
     object-fit: cover;
+  }
+
+  .movie-poster{
+    @media screen and (max-width:400px) {
+      width:7rem;
+    }
   }
   img{
     width: 2rem;
@@ -198,24 +214,31 @@ section{
   }
   
   h3{
-    font-size: 0.75rem;
+    font-size: 1rem;
 
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       overflow: hidden;
       line-height: 1.2em; /* Adjust based on your font size */
-      max-height: 2.4em; /* Should be line-height * 2 */
+      min-height: 2.4em;
+      /* height:2.4rem; */
       margin-top:0;
+      @media screen and (max-width:400px) {
+      font-size: 0.75rem;
+      /* min-height: 1.2rem; */
+    }
   }
+
 
   .more-info-link{
-    color: rgb(117, 216, 255);
+    /* color: rgb(117, 216, 255); */
+    font-size: 24px;
   }
-}
 
-.movie-info{
-  padding:1rem;
+  .more-info-link:hover{
+    color:rgb(117, 216, 255);
+  }
 }
 
 .favMovies{
@@ -226,21 +249,28 @@ section{
 
 .movie-img-wrapper {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
+  /* display: flex; */
 }
 
 .movie-info {
-  display: none;
-  position: absolute;
+  /* display: none;
+  position: absolute; */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 9rem;
+  /* height: 150px; */
   background: rgba(0, 0, 0, 0.8); /* Dark background with some transparency */
   color: white;
-  padding: 20px;
+  padding: 0.5rem;
   box-sizing: border-box;
   text-align: center;
+}
+
+.movie-info{
+  @media only screen and (max-width:400px) {
+    width:7rem;
+  }
 }
 
 .movie-img-wrapper:hover .movie-info {
@@ -274,6 +304,7 @@ section{
   color: #fff;
   text-decoration: underline;
   font-size: 14px;
+  margin:auto;
 }
 
 .movies-section-wrapper {
@@ -329,6 +360,11 @@ section{
   cursor: pointer;
   border-radius: 20px; /* Rounded buttons similar to YouTube */
   white-space: nowrap; /* Ensure text doesn't wrap */
+@media only screen and (max-width:400px) {
+  font-size:0.5rem;
+  font-size:10px;
+  padding:5px 10px;
+}
 }
 
 /* Active button styles */
@@ -420,4 +456,17 @@ section{
 
 .fav{
   font-size: 24px;
+  margin-right:1rem;
+  margin:auto
+}
+
+.fav:hover{
+    color:rgb(117, 216, 255);
+    
+}
+
+.fav-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

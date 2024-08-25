@@ -18,9 +18,15 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
   const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
-    if (!showScroll && window.scrollY > 400) {
-      setShowScroll(true);
-    } else if (showScroll && window.scrollY <= 400) {
+    // Check if the window width is greater than or equal to 400 pixels
+    if (window.innerWidth >= 400) {
+      if (!showScroll && window.scrollY > 400) {
+        setShowScroll(true);
+      } else if (showScroll && window.scrollY <= 400) {
+        setShowScroll(false);
+      }
+    } else {
+      // Hide the scroll-to-top button if the screen width is less than 400px
       setShowScroll(false);
     }
   };
@@ -40,7 +46,7 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
 
     const newSearchState=!onSearch;
       setOnSearch(newSearchState);
-      if(newMenuState&&onSearch){
+      if(onMenu&&onSearch){
       onSearchToggle(true);
       }else{
       onSearchToggle(newSearchState);
@@ -95,6 +101,7 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
   const handleSuggestionClick = (id) => {
     navigate(`/movie/${id}`);
     clearSearch();
+    setOnMenu(false);
   };
   
   const clearSearch = () => {
