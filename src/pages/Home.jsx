@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { CiCirclePlus, CiCircleCheck } from "react-icons/ci";
+import { FaInfoCircle } from "react-icons/fa";
 
 const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
@@ -52,35 +53,34 @@ const Home = ({ movieSection, setMovieSection }) => {
     <div className="movies">
       <div className="movies-section-wrapper">
         <div className="movies-section">
-        <button
-          onClick={() => setMovieSection("Now Playing")}
-          className={movieSection === "Now Playing" ? "active" : ""}
-        >
-          Now Playing
-        </button>
-        <button
-          onClick={() => setMovieSection("Top Rated")}
-          className={movieSection === "Top Rated" ? "active" : ""}
-        >
-          Top Rated
-        </button>
-        <button
-          onClick={() => setMovieSection("Upcoming")}
-          className={movieSection === "Upcoming" ? "active" : ""}
-        >
-          Upcoming
-        </button>
-        <button
-          onClick={() => setMovieSection("Popular")}
-          className={movieSection === "Popular" ? "active" : ""}
-        >
-          Popular
-        </button>
-      <div className="right-fade"></div> 
+          <button
+            onClick={() => setMovieSection("Now Playing")}
+            className={movieSection === "Now Playing" ? "active" : ""}
+          >
+            Now Playing
+          </button>
+          <button
+            onClick={() => setMovieSection("Top Rated")}
+            className={movieSection === "Top Rated" ? "active" : ""}
+          >
+            Top Rated
+          </button>
+          <button
+            onClick={() => setMovieSection("Upcoming")}
+            className={movieSection === "Upcoming" ? "active" : ""}
+          >
+            Upcoming
+          </button>
+          <button
+            onClick={() => setMovieSection("Popular")}
+            className={movieSection === "Popular" ? "active" : ""}
+          >
+            Popular
+          </button>
+          <div className="right-fade"></div>
+        </div>
+      </div>
 
-      </div>
-      </div>
-      
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
@@ -92,23 +92,24 @@ const Home = ({ movieSection, setMovieSection }) => {
               />
               <div className="movie-info">
                 <h3>{movie.title}</h3>
-                <div onClick={() => handleFavorite(movie)} className="fav">
-                  {favMovies.some((favMovie) => favMovie.id === movie.id) ? 
-                    // <img
-                    //   src="remove-from-favorites-icon.svg"
-                    //   alt="unfavorite"
-                    // />
-                    <FaCheck />
-                    // <CiCirclePlus />
-                   : 
-                    // <img src="add-to-favorites-icon.svg" alt="favorite" />
-                    <FaPlus/>
-                    // <CiCircleCheck />
-                  }
+                <div className="fav-link">
+                  <div onClick={() => handleFavorite(movie)} className="fav">
+                    {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
+                      <span title="Favorite Added">
+                        <FaCheck />
+                      </span>
+                    ) : (
+                      <span title="Favorite">
+                        <FaPlus />
+                      </span>
+                    )}
+                  </div>
+                  <Link to={`/movie/${movie.id}`} className="more-info-link">
+                    <span title="More Infomation">
+                      <FaInfoCircle />
+                    </span>
+                  </Link>
                 </div>
-                <Link to={`/movie/${movie.id}`} className="more-info-link">
-                  More Info
-                </Link>
               </div>
             </div>
           </div>
