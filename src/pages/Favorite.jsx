@@ -158,7 +158,9 @@ export const Favorite = () => {
                       </span>
                     </div>
                     <Link to={`/movie/${movie.id}`} className="more-info-link">
-                      <FaInfoCircle />
+                      <span title="More Infomation">
+                        <FaInfoCircle />
+                      </span>
                     </Link>
                   </div>
                 </div>

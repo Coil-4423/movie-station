@@ -1,0 +1,56 @@
+/* src/components/Footer.css */
+.footer {
+    background-color: #828282;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    width: 100%;
+    /* height: 4rem; */
+    bottom: 0;
+  }
+  
+  .footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  
+  /* Mobile version adjustments */
+  @media (max-width: 768px) {
+    .footer {
+      height: auto; /* Adjusts height to fit content */
+      padding: 10px 0; /* Increases padding for better touch interaction */
+    }
+  
+    .footer-content {
+      padding: 0 20px; /* Adjusts padding for smaller screens */
+      font-size: 0.9rem; /* Reduces font size for better readability on smaller screens */
+    }
+  
+    .footer p {
+      margin: 5px 0; /* Adds margin between paragraphs for better spacing */
+    }
+  }
+  
+  /* Smaller mobile screens */
+  @media (max-width: 480px) {
+    .footer {
+      padding: 15px 0; /* Increases padding for smaller screens */
+    }
+  
+    .footer-content {
+      padding: 0 15px; /* Further adjusts padding */
+      font-size: 0.8rem; /* Further reduces font size for readability */
+    }
+  }
+  

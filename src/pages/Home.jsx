@@ -53,35 +53,34 @@ const Home = ({ movieSection, setMovieSection }) => {
     <div className="movies">
       <div className="movies-section-wrapper">
         <div className="movies-section">
-        <button
-          onClick={() => setMovieSection("Now Playing")}
-          className={movieSection === "Now Playing" ? "active" : ""}
-        >
-          Now Playing
-        </button>
-        <button
-          onClick={() => setMovieSection("Top Rated")}
-          className={movieSection === "Top Rated" ? "active" : ""}
-        >
-          Top Rated
-        </button>
-        <button
-          onClick={() => setMovieSection("Upcoming")}
-          className={movieSection === "Upcoming" ? "active" : ""}
-        >
-          Upcoming
-        </button>
-        <button
-          onClick={() => setMovieSection("Popular")}
-          className={movieSection === "Popular" ? "active" : ""}
-        >
-          Popular
-        </button>
-      <div className="right-fade"></div> 
+          <button
+            onClick={() => setMovieSection("Now Playing")}
+            className={movieSection === "Now Playing" ? "active" : ""}
+          >
+            Now Playing
+          </button>
+          <button
+            onClick={() => setMovieSection("Top Rated")}
+            className={movieSection === "Top Rated" ? "active" : ""}
+          >
+            Top Rated
+          </button>
+          <button
+            onClick={() => setMovieSection("Upcoming")}
+            className={movieSection === "Upcoming" ? "active" : ""}
+          >
+            Upcoming
+          </button>
+          <button
+            onClick={() => setMovieSection("Popular")}
+            className={movieSection === "Popular" ? "active" : ""}
+          >
+            Popular
+          </button>
+          <div className="right-fade"></div>
+        </div>
+      </div>
 
-      </div>
-      </div>
-      
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
@@ -95,17 +94,22 @@ const Home = ({ movieSection, setMovieSection }) => {
                 <h3>{movie.title}</h3>
                 <div className="fav-link">
                   <div onClick={() => handleFavorite(movie)} className="fav">
-                  {favMovies.some((favMovie) => favMovie.id === movie.id) ? 
-                    <FaCheck />
-                   : 
-                    <FaPlus/>
-                  }
+                    {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
+                      <span title="Favorite Added">
+                        <FaCheck />
+                      </span>
+                    ) : (
+                      <span title="Favorite">
+                        <FaPlus />
+                      </span>
+                    )}
+                  </div>
+                  <Link to={`/movie/${movie.id}`} className="more-info-link">
+                    <span title="More Infomation">
+                      <FaInfoCircle />
+                    </span>
+                  </Link>
                 </div>
-                <Link to={`/movie/${movie.id}`} className="more-info-link">
-                  <FaInfoCircle/>
-                </Link>
-                </div>
-                
               </div>
             </div>
           </div>

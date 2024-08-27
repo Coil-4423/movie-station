@@ -5,7 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../css/Navbar.css";
 import "../css/searchbar.css";
 
-const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
+const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
   const [onSearch, setOnSearch] = useState(false);
   const [onMenu, setOnMenu] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -43,34 +43,33 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
   }, [showScroll]);
 
   const showSearch = () => {
-
-    const newSearchState=!onSearch;
-      setOnSearch(newSearchState);
-      if(onMenu&&onSearch){
+    const newSearchState = !onSearch;
+    setOnSearch(newSearchState);
+    if (onMenu && onSearch) {
       onSearchToggle(true);
-      }else{
+    } else {
       onSearchToggle(newSearchState);
-      }
- // Toggle blur state in parent
+    }
+    // Toggle blur state in parent
   };
 
   const toggleMenu = () => {
-    const newMenuState = !onMenu
+    const newMenuState = !onMenu;
     setOnMenu(newMenuState);
     onMenuToggle(newMenuState);
   };
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-  
+
   const handleInputFocus = () => {
     setSearchFocused(true);
   };
-  
+
   const handleInputBlur = () => {
     setTimeout(() => {
       setSearchFocused(false);
     }, 200);
   };
-  
+
   const handleSearch = async (query) => {
     setSearchQuery(query);
     if (query.length > 1) {
@@ -79,7 +78,8 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0", // Replace with your token
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0", // Replace with your token
         },
       };
       try {
@@ -97,13 +97,13 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
       setSearchFocused(false);
     }
   };
-  
+
   const handleSuggestionClick = (id) => {
     navigate(`/movie/${id}`);
     clearSearch();
     setOnMenu(false);
   };
-  
+
   const clearSearch = () => {
     setSearchQuery("");
     setSearchResults([]);
@@ -131,20 +131,80 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
             <>
               <IoIosMenu className="menu-icon" onClick={toggleMenu} />
               <div className="navbar-logo">
-                <a href="/"><img src="/ms.svg" alt="Logo" /></a>
+                <a href="/">
+                  <img src="/take-samardeep-jasnoor-movie-app/ms.svg" alt="Logo" />
+                </a>
               </div>
-              <div className={onMenu ? "navbar-links responsive" : "navbar-links"}>
-                <div className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-                  <Link to="/" className="link" onClick={() => setOnMenu(false)}>Home</Link>
-                  <div className={`dropdown-content ${dropdownOpen ? "show" : ""}`}>
-                    <button onClick={() => { setMovieSection("Now Playing"); navigate("/"); setOnMenu(false); }}>Now Playing</button>
-                    <button onClick={() => { setMovieSection("Top Rated"); navigate("/"); setOnMenu(false); }}>Top Rated</button>
-                    <button onClick={() => { setMovieSection("Upcoming"); navigate("/"); setOnMenu(false); }}>Upcoming</button>
-                    <button onClick={() => { setMovieSection("Popular"); navigate("/"); setOnMenu(false); }}>Popular</button>
+              <div
+                className={onMenu ? "navbar-links responsive" : "navbar-links"}
+              >
+                <div
+                  className="dropdown"
+                  onMouseEnter={toggleDropdown}
+                  onMouseLeave={toggleDropdown}
+                >
+                  <Link
+                    to="/"
+                    className="link"
+                    onClick={() => setOnMenu(false)}
+                  >
+                    Home
+                  </Link>
+                  <div
+                    className={`dropdown-content ${dropdownOpen ? "show" : ""}`}
+                  >
+                    <button
+                      onClick={() => {
+                        setMovieSection("Now Playing");
+                        navigate("/");
+                        setOnMenu(false);
+                      }}
+                    >
+                      Now Playing
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMovieSection("Top Rated");
+                        navigate("/");
+                        setOnMenu(false);
+                      }}
+                    >
+                      Top Rated
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMovieSection("Upcoming");
+                        navigate("/");
+                        setOnMenu(false);
+                      }}
+                    >
+                      Upcoming
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMovieSection("Popular");
+                        navigate("/");
+                        setOnMenu(false);
+                      }}
+                    >
+                      Popular
+                    </button>
                   </div>
                 </div>
-                <Link to="/about" className="link" onClick={() => setOnMenu(false)}>About</Link>
-                <Link to="/favorite" className="link" onClick={() => setOnMenu(false)}>Favorite</Link>
+                <Link
+                  to="/about"
+                  className="link"
+                  onClick={() => setOnMenu(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  to="/favorite"
+                  className="link"
+                  onClick={() => setOnMenu(false)}
+                >
+                  Favorite
+                </Link>
               </div>
             </>
           )}
@@ -209,7 +269,6 @@ const Navbar = ({ onSearchToggle, setMovieSection , onMenuToggle }) => {
         &#8679; {/* Unicode for an up arrow */}
       </button>
     </div>
-    
   );
 };
 

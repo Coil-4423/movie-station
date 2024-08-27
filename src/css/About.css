@@ -1,0 +1,45 @@
+/* src/components/About.css */
+.about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .about h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .about p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .tmdb-attribution {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .tmdb-logo {
+    width: 50px; /* Make the TMDb logo smaller */
+    opacity: 0.8; /* Reduce opacity to make it less prominent */
+    margin-bottom: 10px;
+  }
+  
+  .tmdb-attribution p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  @media only screen and (max-width:480px){
+    .about h1{
+      font-size: 1.5rem;
+    }
+    .about p {
+      font-size: 0.75rem;
+      
+    }
+  }
+  
