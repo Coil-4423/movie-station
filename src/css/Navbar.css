@@ -251,8 +251,9 @@ body {
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block; 
 }
+
 
 .scroll-to-top {
   position: fixed;
