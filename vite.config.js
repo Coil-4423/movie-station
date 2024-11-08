@@ -6,6 +6,7 @@ export default defineConfig({
   base: '/movie-station/',
   build: {
     outDir: 'movie-station'
+
   },
   plugins: [react()],
 })
