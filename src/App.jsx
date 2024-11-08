@@ -7,7 +7,6 @@ import SingleMovie from "./pages/SingleMovie";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-// import { APP_FOLDER_NAME } from "/globals.js";
 
 function App() {
   const [isBlurred, setIsBlurred] = useState(false);
