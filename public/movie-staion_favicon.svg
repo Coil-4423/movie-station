@@ -6,5 +6,5 @@
   <rect x="90" y="150" width="20" height="40" fill="#F4D03F" />
   <rect x="10" y="90" width="40" height="20" fill="#F4D03F" />
   <rect x="150" y="90" width="40" height="20" fill="#F4D03F" />
-  <text x="230" y="130" font-family="Verdana" font-size="80px" fill="#F4D03F" text-anchor="start">Movie Station</text>
+  <!-- <text x="230" y="130" font-family="Verdana" font-size="80px" fill="#F4D03F" text-anchor="start">Movie Station</text> -->
 </svg>

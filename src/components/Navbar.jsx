@@ -4,6 +4,7 @@ import { IoIosMenu } from "react-icons/io";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../css/Navbar.css";
 import "../css/searchbar.css";
+import { APP_FOLDER_NAME } from "../globals/globals";
 
 const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
   const [onSearch, setOnSearch] = useState(false);
@@ -132,7 +133,7 @@ const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
               <IoIosMenu className="menu-icon" onClick={toggleMenu} />
               <div className="navbar-logo">
                 <a href="/">
-                  <img src="/take-samardeep-jasnoor-movie-app/ms.svg" alt="Logo" />
+                  <img src={`/${APP_FOLDER_NAME}/ms.svg`} alt="Logo" />
                 </a>
               </div>
               <div
