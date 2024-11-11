@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import { Favorite } from "./pages/Favorite";
-import SingleMovie from "./pages/SingleMovie";
+import SingleMovie from "@/pages/SingleMovie/SingleMovie";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -17,13 +17,13 @@ function App() {
   };
 
   return (
-    <>
+    <div className="layout">
       <Navbar
         onSearchToggle={handleBlurToggle}
         setMovieSection={setMovieSection}
         onMenuToggle={handleBlurToggle}
       />
-      <div className={isBlurred ? "blurred-content" : ""}>
+      <main className={`main-content ${isBlurred ? "blurred-content" : ""}`}>
         <Routes>
           <Route
             path="/"
@@ -38,9 +38,9 @@ function App() {
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
         </Routes>
-        <Footer></Footer>
-      </div>
-    </>
+      </main>
+      <Footer></Footer>
+    </div>
   );
 }
 

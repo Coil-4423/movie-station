@@ -2,13 +2,14 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { addMovies, deleteMovies } from "../features/favMoviesSlice";
-import StarRating from "../components/StarRating"; // Import the StarRating component
+import { addMovies, deleteMovies } from "../../features/favMoviesSlice";
+import StarRating from "../../components/StarRating"; // Import the StarRating component
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
+import '@/pages/SingleMovie/SingleMovie.css'
 
 const SingleMovie = () => {
   const { id } = useParams(); // Get the movie ID from the URL
@@ -80,6 +81,8 @@ const SingleMovie = () => {
         padding: "20px",
         color: "#fff",
         overflow: "hidden",
+        // width:'100%',
+        // height:'100%',
       }}
     >
       <div
@@ -114,6 +117,7 @@ const SingleMovie = () => {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
               style={{ with: "200px", height: "300px", borderRadius: "10px" }}
+              className="movie-background"
             />
           </div>
           <div className="movie-detail" style={{ maxWidth: "600px" }}>
