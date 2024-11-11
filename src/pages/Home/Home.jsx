@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { deleteMovies, addMovies } from "../features/favMoviesSlice";
+import { deleteMovies, addMovies } from "../../features/favMoviesSlice";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import { Favorite } from "./pages/Favorite";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import { Favorite } from "./pages/Favorite/Favorite";
 import SingleMovie from "@/pages/SingleMovie/SingleMovie";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [isBlurred, setIsBlurred] = useState(false);

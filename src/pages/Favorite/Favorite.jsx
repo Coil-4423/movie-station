@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deleteMovies } from "../features/favMoviesSlice";
+import { deleteMovies } from "@/features/favMoviesSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
