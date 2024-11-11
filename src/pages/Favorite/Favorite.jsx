@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
+import MovieCard from "@/components/MovieCard/MovieCard";
 
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
@@ -142,28 +143,7 @@ export const Favorite = () => {
                   alt={movie.title}
                   className="movie-poster"
                 />
-                <div className="movie-info">
-                  <h3>{movie.title}</h3>
-                  <div className="fav-link">
-                    <div
-                      onClick={() => {
-                        dispatch(deleteMovies({ id: movie.id }));
-                      }}
-                      className="fav"
-                    >
-                      {/* <img src="remove-from-favorites-icon.svg" alt="unfavorite" /> */}
-                      {/* <FaCheck/> */}
-                      <span title="Remove from favorites">
-                        <IoIosRemoveCircleOutline />
-                      </span>
-                    </div>
-                    <Link to={`/movie/${movie.id}`} className="more-info-link">
-                      <span title="More Infomation">
-                        <FaInfoCircle />
-                      </span>
-                    </Link>
-                  </div>
-                </div>
+                <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
               </div>
             </div>
           ))

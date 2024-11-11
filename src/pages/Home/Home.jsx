@@ -1,16 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { deleteMovies, addMovies } from "../../features/favMoviesSlice";
-import { Link } from "react-router-dom";
-import { FaCheck } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa";
-import { CiCirclePlus, CiCircleCheck } from "react-icons/ci";
-import { FaInfoCircle } from "react-icons/fa";
+
+import MovieCard from "@/components/MovieCard/MovieCard";
 
 const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
-  const dispatch = useDispatch();
   const favMovies = useSelector((state) => state.favMovie.movies);
 
   useEffect(() => {
@@ -38,16 +33,6 @@ const Home = ({ movieSection, setMovieSection }) => {
 
     fetchData();
   }, [movieSection]);
-
-  const handleFavorite = (movie) => {
-    if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
-      dispatch(addMovies(movie));
-      console.log("Added to favorites:", movie);
-    } else {
-      dispatch(deleteMovies({ id: movie.id }));
-      console.log("Removed from favorites:", movie);
-    }
-  };
 
   return (
     <div className="movies">
@@ -90,27 +75,7 @@ const Home = ({ movieSection, setMovieSection }) => {
                 alt={movie.title}
                 className="movie-poster"
               />
-              <div className="movie-info">
-                <h3>{movie.title}</h3>
-                <div className="fav-link">
-                  <div onClick={() => handleFavorite(movie)} className="fav">
-                    {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
-                      <span title="Favorite Added">
-                        <FaCheck />
-                      </span>
-                    ) : (
-                      <span title="Favorite">
-                        <FaPlus />
-                      </span>
-                    )}
-                  </div>
-                  <Link to={`/movie/${movie.id}`} className="more-info-link">
-                    <span title="More Infomation">
-                      <FaInfoCircle />
-                    </span>
-                  </Link>
-                </div>
-              </div>
+              <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
             </div>
           </div>
         ))}
