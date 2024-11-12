@@ -7,24 +7,30 @@ import { FaInfoCircle } from "react-icons/fa";
 import { deleteMovies, addMovies } from "../../features/favMoviesSlice";
 import { useDispatch } from "react-redux";
 
-
-const MovieCard = ({ movie, favMovies}) => {
-    const dispatch = useDispatch();
-    const handleFavorite = (movie) => {
-        if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
-          dispatch(addMovies(movie));
-          console.log("Added to favorites:", movie);
-          console.log(favMovies)
-        } else {
-          dispatch(deleteMovies({ id: movie.id }));
-          console.log("Removed from favorites:", movie);
-        }
-      };
+const MovieCard = ({ movie, favMovies }) => {
+  const dispatch = useDispatch();
+  const handleFavorite = (movie) => {
+    if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
+      dispatch(addMovies(movie));
+      console.log("Added to favorites:", movie);
+      console.log(favMovies);
+    } else {
+      dispatch(deleteMovies({ id: movie.id }));
+      console.log("Removed from favorites:", movie);
+    }
+  };
   return (
-    <div className="movie-info">
-      <h3>{movie.title}</h3>
-      <div className="fav-link">
-        <div onClick={() => handleFavorite(movie)} className="fav">
+    <div className="movie-card">
+      <h3 className="movie-card__title">{movie.title}</h3>
+      <div className="movie-card__actions">
+        <div
+          onClick={() => handleFavorite(movie)}
+          className={`movie-card__favorite ${
+            favMovies.some((favMovie) => favMovie.id === movie.id)
+              ? "movie-card__favorite--added"
+              : ""
+          }`}
+        >
           {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
             <span title="Favorite Added">
               <FaCheck />
@@ -35,8 +41,8 @@ const MovieCard = ({ movie, favMovies}) => {
             </span>
           )}
         </div>
-        <Link to={`/movie/${movie.id}`} className="more-info-link">
-          <span title="More Infomation">
+        <Link to={`/movie/${movie.id}`} className="movie-card__info-link">
+          <span title="More Information">
             <FaInfoCircle />
           </span>
         </Link>
