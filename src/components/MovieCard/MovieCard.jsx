@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
-import { deleteMovies, addMovies } from "../../features/favMoviesSlice";
+import { deleteFromFavorite, addToFavorite } from "../../features/favMoviesSlice";
 import { useDispatch } from "react-redux";
 import "./MovieCard.css";
 import StarRating from "../StarRating/StarRating";
@@ -13,10 +13,10 @@ const MovieCard = ({ movie, favMovies }) => {
 
   const handleFavorite = (movie) => {
     if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
-      dispatch(addMovies(movie));
+      dispatch(addToFavorite(movie));
       console.log("Added to favorites:", movie);
     } else {
-      dispatch(deleteMovies({ id: movie.id }));
+      dispatch(deleteFromFavorite({ id: movie.id }));
       console.log("Removed from favorites:", movie);
     }
   };

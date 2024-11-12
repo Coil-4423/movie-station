@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { addMovies, deleteMovies } from "../../features/favMoviesSlice";
+import { addToFavorite, deleteFromFavorite } from "../../features/favMoviesSlice";
 import StarRating from "../../components/StarRating/StarRating"; // Import the StarRating component
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
@@ -21,10 +21,10 @@ const SingleMovie = () => {
 
   const handleFavorite = () => {
     if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
-      dispatch(addMovies(movie));
+      dispatch(addToFavorite(movie));
       console.log("Added to favorites:", movie);
     } else {
-      dispatch(deleteMovies({ id: movie.id }));
+      dispatch(deleteFromFavorite({ id: movie.id }));
       console.log("Removed from favorites:", movie);
     }
   };

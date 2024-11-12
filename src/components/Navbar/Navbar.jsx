@@ -206,6 +206,13 @@ const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
                 >
                   Favorite
                 </Link>
+                <Link
+                  to="/watchlist"
+                  className="link"
+                  onClick={() => setOnMenu(false)}
+                >
+                  WatchList
+                </Link>
               </div>
             </>
           )}

@@ -2,41 +2,41 @@ import { createSlice } from '@reduxjs/toolkit';
 import { appStorageName } from '../globals/globalVariables';
 
 function getMoviesFromLocalStorage() {
-  const favMoviesFromStorage = localStorage.getItem(appStorageName);
-  console.log(favMoviesFromStorage);
-  if (favMoviesFromStorage === null) {
+  const WatchListFromStorage = localStorage.getItem(appStorageName);
+  console.log(WatchListFromStorage);
+  if (WatchListFromStorage === null) {
     return {
       movies: [],
       total: 0
     };
   }
 
-  return JSON.parse(favMoviesFromStorage);
+  return JSON.parse(WatchListFromStorage);
 }
 
-const favMoviesFromStorage = getMoviesFromLocalStorage();
+const WatchListFromStorage = getMoviesFromLocalStorage();
 
 const initialState = {
-  movies: favMoviesFromStorage.movies,
-  total: favMoviesFromStorage.total
+  movies: WatchListFromStorage.movies,
+  total: WatchListFromStorage.total
 };
 
 const getIndex = (arr, id) => {
   return arr.findIndex(movie => movie.id === id);
 };
 
-export const favMoviesSlice = createSlice({
+export const WatchListSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    addToFavorite: (state, action) => {
+    addMovies: (state, action) => {
       const existingIndex = getIndex(state.movies, action.payload.id);
       if (existingIndex === -1) {
         state.movies = [...state.movies, action.payload];
         state.total += 1;
       }
     },
-    deleteFromFavorite: (state, action) => {
+    deleteMovies: (state, action) => {
       const index = getIndex(state.movies, action.payload.id);
       if (index !== -1) {
         state.total -= 1;
@@ -46,6 +46,6 @@ export const favMoviesSlice = createSlice({
   },
 });
 
-export const { addToFavorite, deleteFromFavorite } = favMoviesSlice.actions;
+export const { addMovies, deleteMovies } = WatchListSlice.actions;
 
-export default favMoviesSlice.reducer;
+export default WatchListSlice.reducer;

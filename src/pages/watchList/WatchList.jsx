@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { deleteMovies } from "@/features/watchListSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import MovieCard from "@/components/MovieCard/MovieCard";
-import './Favorite.css';
+import './WatchList.css';
 
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
-export const Favorite = () => {
-  const favMovies = useSelector((state) => state.favMovie.movies);
+export const WatchList = () => {
+  const WatchListMovies = useSelector((state) => state.watchList.movies);
   const dispatch = useDispatch();
 
   // State for sorting criteria and pagination
@@ -41,7 +42,7 @@ export const Favorite = () => {
     }
   };
 
-  const sortedMovies = sortMovies(favMovies);
+  const sortedMovies = sortMovies(WatchListMovies);
 
   // Pagination logic
   const indexOfLastMovie = currentPage * moviesPerPage;
@@ -112,7 +113,7 @@ export const Favorite = () => {
 
   return (
     <div className="movies">
-      <h1>Favorites</h1>
+      <h1>watchList</h1>
       {/* Sort dropdown */}
       <div className="sort-dropdown">
         <label htmlFor="sortCriteria">Sort by: </label>
@@ -137,13 +138,13 @@ export const Favorite = () => {
         {currentMovies.length > 0 ? (
           currentMovies.map((movie) => (
             <div key={movie.id} className="movie-item">
-                <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
+                <MovieCard movie={movie} watchList={watchList}></MovieCard>
             </div>
           ))
         ) : (
           <p>
-            Sorry, you have no favorited movies. Return to the home page to add
-            a favorite movie.
+            Sorry, you have no watchList movies. Return to the home page to add
+            a watchList movie.
           </p>
         )}
       </div>
