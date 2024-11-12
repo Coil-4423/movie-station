@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import "./App.css";
+import "./App.css";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import { Favorite } from "./pages/Favorite/Favorite";

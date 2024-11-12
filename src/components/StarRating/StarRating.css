@@ -1,0 +1,35 @@
+  /* star rating  */
+
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+  .star-rating-bottom {
+    color: rgb(154, 154, 154);
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .star-rating-top {
+    color: yellow;
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0%;
+    display: flex;
+  }
+  
+  .star-rating span {
+    display: inline-block;
+    margin-right: 4px;
+    /* Consistent spacing between stars */
+  }
+  

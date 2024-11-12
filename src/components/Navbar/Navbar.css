@@ -17,6 +17,7 @@ body {
   position: sticky; /* Change to sticky */
   top: 0; /* Stay at the top of the viewport */
   height: 64px;
+  width:100%;
 }
 
 .navbar-container {

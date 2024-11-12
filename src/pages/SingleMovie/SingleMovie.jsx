@@ -81,8 +81,6 @@ const SingleMovie = () => {
         padding: "20px",
         color: "#fff",
         overflow: "hidden",
-        // width:'100%',
-        // height:'100%',
       }}
     >
       <div

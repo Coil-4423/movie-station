@@ -6,6 +6,7 @@ import { FaCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import MovieCard from "@/components/MovieCard/MovieCard";
+import './Favorite.css';
 
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
