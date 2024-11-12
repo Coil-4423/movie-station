@@ -4,7 +4,7 @@
     /* border-radius: 8px; */
     overflow: visible;
     position: relative;
-    background-color: #fff;
+    background-color: #000000;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -81,8 +81,6 @@
     margin-bottom: 0.5rem;
     padding: 0 1rem;
     text-decoration: none;
-    color: inherit;
-    /* Ensures it inherits the parent color */
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;

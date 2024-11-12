@@ -10,3 +10,7 @@
   flex-grow:1;
   /* max-width: 1200px; */
 }
+
+p, h3{
+  color:white;
+}
