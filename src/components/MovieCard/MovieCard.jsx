@@ -6,6 +6,7 @@ import { CiCirclePlus, CiCircleCheck } from "react-icons/ci";
 import { FaInfoCircle } from "react-icons/fa";
 import { deleteMovies, addMovies } from "../../features/favMoviesSlice";
 import { useDispatch } from "react-redux";
+import "./MovieCard.css";
 
 const MovieCard = ({ movie, favMovies }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,11 @@ const MovieCard = ({ movie, favMovies }) => {
   };
   return (
     <div className="movie-card">
+      <img
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+        className="movie-card__poster"
+      />
       <h3 className="movie-card__title">{movie.title}</h3>
       <div className="movie-card__actions">
         <div

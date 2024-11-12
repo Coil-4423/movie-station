@@ -70,11 +70,7 @@ const Home = ({ movieSection, setMovieSection }) => {
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
             <div className="movie-img-wrapper">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="movie-poster"
-              />
+
               <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
             </div>
           </div>

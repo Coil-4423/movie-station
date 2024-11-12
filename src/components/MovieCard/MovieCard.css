@@ -1,0 +1,39 @@
+.movie-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    width:30%;
+  }
+  .movie-card__poster{
+    width: 100%;
+  }
+  
+  .movie-card__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .movie-card__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .movie-card__favorite {
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .movie-card__favorite--added {
+    color: green;
+  }
+  
+  .movie-card__info-link {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .movie-card__info-link:hover {
+    text-decoration: underline;
+  }
+  
