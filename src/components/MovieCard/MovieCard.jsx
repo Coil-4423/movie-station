@@ -22,12 +22,13 @@ const MovieCard = ({ movie, favMovies }) => {
   };
   return (
     <div className="movie-card">
+      <div className="movie-card__poster">
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
-        className="movie-card__poster"
       />
       <h3 className="movie-card__title">{movie.title}</h3>
+      </div>
       <div className="movie-card__actions">
         <div
           onClick={() => handleFavorite(movie)}

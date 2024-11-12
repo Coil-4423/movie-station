@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import MovieCard from "@/components/MovieCard/MovieCard";
+import "./Home.css";
 
 const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
@@ -69,10 +69,7 @@ const Home = ({ movieSection, setMovieSection }) => {
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
-            <div className="movie-img-wrapper">
-
               <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
-            </div>
           </div>
         ))}
       </div>

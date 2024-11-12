@@ -1,16 +1,34 @@
 .movie-card {
     border: 1px solid #ccc;
-    padding: 1rem;
+    /* padding: 1rem; */
     border-radius: 8px;
-    width:30%;
+    /* width:300px; */
   }
+
   .movie-card__poster{
     width: 100%;
+    height:100%;
+    position:relative;
   }
+  .movie-card__poster img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .movie-card__poster .movie-card__title{
+    display: none;
+  }
+
   
-  .movie-card__title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+  .movie-card__poster:hover .movie-card__title{
+    display: block;
+    position:absolute;
+    bottom:0rem;
+    color:white;
+    padding:1rem;
+    margin-bottom: 0.3rem;
+    background-image: linear-gradient(to bottom , rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.725));
+    width:100%;
   }
   
   .movie-card__actions {

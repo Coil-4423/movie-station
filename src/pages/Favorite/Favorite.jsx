@@ -137,9 +137,7 @@ export const Favorite = () => {
         {currentMovies.length > 0 ? (
           currentMovies.map((movie) => (
             <div key={movie.id} className="movie-item">
-              <div className="movie-img-wrapper">
                 <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
-              </div>
             </div>
           ))
         ) : (
