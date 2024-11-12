@@ -104,7 +104,7 @@
     height: 10%;
 }
 
-.movie-card__favorite {
+.movie-card__favorite, .movie-card__watchlist {
     cursor: pointer;
     font-size: 1.5rem;
     color: #666;
@@ -164,7 +164,7 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.movie-card__favorite:hover .tooltip {
+.movie-card__favorite:hover .tooltip,.movie-card__watchlist:hover .tooltip {
     opacity: 1;
     /* Show tooltip on hover */
     visibility: visible;

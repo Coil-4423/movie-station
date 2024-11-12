@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deleteMovies } from "@/features/watchListSlice";
+import { deleteFromWatchList } from "@/features/watchListSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
@@ -12,6 +12,7 @@ import { IoIosRemoveCircleOutline } from "react-icons/io";
 
 export const WatchList = () => {
   const WatchListMovies = useSelector((state) => state.watchList.movies);
+  const favMovies = useSelector((state)=>state.favMovie.movies);
   const dispatch = useDispatch();
 
   // State for sorting criteria and pagination
@@ -138,7 +139,7 @@ export const WatchList = () => {
         {currentMovies.length > 0 ? (
           currentMovies.map((movie) => (
             <div key={movie.id} className="movie-item">
-                <MovieCard movie={movie} watchList={watchList}></MovieCard>
+                <MovieCard movie={movie} favMovies={favMovies} watchList={WatchListMovies}></MovieCard>
             </div>
           ))
         ) : (

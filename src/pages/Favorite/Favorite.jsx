@@ -11,6 +11,7 @@ import { IoIosRemoveCircleOutline } from "react-icons/io";
 
 export const Favorite = () => {
   const favMovies = useSelector((state) => state.favMovie.movies);
+  const watchList = useSelector((state) => state.watchList.movies);
   const dispatch = useDispatch();
 
   // State for sorting criteria and pagination
@@ -137,7 +138,7 @@ export const Favorite = () => {
         {currentMovies.length > 0 ? (
           currentMovies.map((movie) => (
             <div key={movie.id} className="movie-item">
-                <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
+                <MovieCard movie={movie} favMovies={favMovies} watchList={watchList}></MovieCard>
             </div>
           ))
         ) : (

@@ -7,6 +7,8 @@ import "./Home.css";
 const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
   const favMovies = useSelector((state) => state.favMovie.movies);
+  const watchList = useSelector((state) => state.watchList.movies);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,7 +71,7 @@ const Home = ({ movieSection, setMovieSection }) => {
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
-              <MovieCard movie={movie} favMovies={favMovies}></MovieCard>
+              <MovieCard movie={movie} favMovies={favMovies} watchList={watchList}></MovieCard>
           </div>
         ))}
       </div>

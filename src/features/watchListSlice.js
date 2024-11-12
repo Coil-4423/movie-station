@@ -29,14 +29,14 @@ export const WatchListSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    addMovies: (state, action) => {
+    addToWatchList: (state, action) => {
       const existingIndex = getIndex(state.movies, action.payload.id);
       if (existingIndex === -1) {
         state.movies = [...state.movies, action.payload];
         state.total += 1;
       }
     },
-    deleteMovies: (state, action) => {
+    deleteFromWatchList: (state, action) => {
       const index = getIndex(state.movies, action.payload.id);
       if (index !== -1) {
         state.total -= 1;
@@ -46,6 +46,6 @@ export const WatchListSlice = createSlice({
   },
 });
 
-export const { addMovies, deleteMovies } = WatchListSlice.actions;
+export const { addToWatchList, deleteFromWatchList } = WatchListSlice.actions;
 
 export default WatchListSlice.reducer;
