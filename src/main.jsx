@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename={`/${APP_FOLDER_NAME}/`}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <App />
+          <App/>
         </PersistGate>
       </Provider>
     </BrowserRouter>

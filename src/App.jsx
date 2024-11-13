@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import { Favorite } from "./pages/Favorite";
-import SingleMovie from "./pages/SingleMovie";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import { Favorite } from "./pages/Favorite/Favorite";
+import {WatchList} from './pages/watchList/WatchList'
+import SingleMovie from "@/pages/SingleMovie/SingleMovie";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import SearchResult from "./pages/SearchResult/SearchResult";
 
 function App() {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -17,13 +19,13 @@ function App() {
   };
 
   return (
-    <>
+    <div className="layout">
       <Navbar
         onSearchToggle={handleBlurToggle}
         setMovieSection={setMovieSection}
         onMenuToggle={handleBlurToggle}
       />
-      <div className={isBlurred ? "blurred-content" : ""}>
+      <main className={`main-content ${isBlurred ? "blurred-content" : ""}`}>
         <Routes>
           <Route
             path="/"
@@ -36,11 +38,13 @@ function App() {
           />
           <Route path="/about" element={<About />} />
           <Route path="/favorite" element={<Favorite />} />
+          <Route path="/watchlist" element={<WatchList />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
+          <Route path='/search-result' element={<SearchResult/>}></Route>
         </Routes>
-        <Footer></Footer>
-      </div>
-    </>
+      </main>
+      <Footer></Footer>
+    </div>
   );
 }
 

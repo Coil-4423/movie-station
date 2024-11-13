@@ -1,17 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { deleteMovies, addMovies } from "../features/favMoviesSlice";
-import { Link } from "react-router-dom";
-import { FaCheck } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa";
-import { CiCirclePlus, CiCircleCheck } from "react-icons/ci";
-import { FaInfoCircle } from "react-icons/fa";
+import MovieCard from "@/components/MovieCard/MovieCard";
+import "./Home.css";
 
 const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
-  const dispatch = useDispatch();
   const favMovies = useSelector((state) => state.favMovie.movies);
+  const watchList = useSelector((state) => state.watchList.movies);
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const [loading,setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,27 +25,24 @@ const Home = ({ movieSection, setMovieSection }) => {
         const response = await axios.get(url, {
           params: { language: "en-US" },
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`, // Replace with your token
+            Authorization: `Bearer ${API_KEY}`, // Replace with your token
           },
         });
         setMovies(response.data.results);
+        setLoading(false);
+        console.log(response.data.results);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [movieSection]);
 
-  const handleFavorite = (movie) => {
-    if (!favMovies.some((favMovie) => favMovie.id === movie.id)) {
-      dispatch(addMovies(movie));
-      console.log("Added to favorites:", movie);
-    } else {
-      dispatch(deleteMovies({ id: movie.id }));
-      console.log("Removed from favorites:", movie);
-    }
-  };
+  if(loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="movies">
@@ -84,34 +79,11 @@ const Home = ({ movieSection, setMovieSection }) => {
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
-            <div className="movie-img-wrapper">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="movie-poster"
-              />
-              <div className="movie-info">
-                <h3>{movie.title}</h3>
-                <div className="fav-link">
-                  <div onClick={() => handleFavorite(movie)} className="fav">
-                    {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
-                      <span title="Favorite Added">
-                        <FaCheck />
-                      </span>
-                    ) : (
-                      <span title="Favorite">
-                        <FaPlus />
-                      </span>
-                    )}
-                  </div>
-                  <Link to={`/movie/${movie.id}`} className="more-info-link">
-                    <span title="More Infomation">
-                      <FaInfoCircle />
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <MovieCard
+              movie={movie}
+              favMovies={favMovies}
+              watchList={watchList}
+            ></MovieCard>
           </div>
         ))}
       </div>

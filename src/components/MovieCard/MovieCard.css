@@ -1,0 +1,171 @@
+/* Movie Card Base */
+.movie-card {
+    border: 1px solid #ccc;
+    /* border-radius: 8px; */
+    overflow: visible;
+    position: relative;
+    background-color: #000000;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 300px;
+    height: 100%;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Poster Wrapper and Overlay */
+.movie-card__poster-wrapper {
+    position: relative;
+    /* 
+    width: 100%; */
+    /* height: 300px; */
+    flex-grow: 1;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    /* Maintain aspect ratio */
+}
+
+.movie-card__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-card__detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+}
+
+.movie-card:hover .movie-card__detail {
+    opacity: 1;
+}
+
+.movie-card__overview {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+
+
+/* Title and Overview */
+.movie-card__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+.movie-card__overview {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 1rem;
+}
+
+/* Actions Section */
+.movie-card__actions {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    height: 10%;
+}
+
+.movie-card__favorite, .movie-card__watchlist {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.movie-card__favorite--added {}
+
+.movie-card__info-link {
+    color: #007bff;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.movie-card__info-link:hover {
+    color: #0056b3;
+}
+
+/* Remove underline and set color for the Link wrapping the title */
+.movie-card__title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Prevent underline on hover */
+.movie-card__title-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.movie-card__favorite {
+    position: relative;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    /* Position the tooltip above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    /* Dark background for the tooltip */
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 11;
+    /* Ensure it appears above other elements */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Optional: Add shadow for better visibility */
+    opacity: 0;
+    /* Hide by default */
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.movie-card__favorite:hover .tooltip,.movie-card__watchlist:hover .tooltip {
+    opacity: 1;
+    /* Show tooltip on hover */
+    visibility: visible;
+}

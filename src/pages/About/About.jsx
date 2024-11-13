@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/About.css';
-import TMDbLogo from '../assets/tmdb-logo.svg'; // Replace with the correct path to your TMDb logo
+import '@/pages/About/About.css';
+import TMDbLogo from '@/assets/tmdb-logo.svg'; // Replace with the correct path to your TMDb logo
 
 const About = () => {
   return (
