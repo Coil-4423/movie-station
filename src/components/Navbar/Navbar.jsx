@@ -59,6 +59,12 @@ const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
     setOnMenu(newMenuState);
     onMenuToggle(newMenuState);
   };
+
+  const offMenu = () =>{
+    const newMenuState = false;
+    setOnMenu(newMenuState);
+    onMenuToggle(newMenuState);
+  }
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleInputFocus = () => {
@@ -219,7 +225,7 @@ const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
         </div>
         {/* Conditionally render the search container */}
         {onSearch && (
-          <SearchBar onSearchToggle={onSearchToggle}></SearchBar>
+          <SearchBar onSearchToggle={onSearchToggle} offMenu={offMenu}></SearchBar>
         )}
         <button
           className={`search-icon ${onSearch ? "active" : ""}`}

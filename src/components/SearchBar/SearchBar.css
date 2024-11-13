@@ -247,15 +247,3 @@
     margin-right: 10px;
   }
   
-  .cancel-search-btn {
-    margin-left: 10px;
-    padding: 8px 15px;
-    background-color: #1c1c1e;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .cancel-search-btn:hover {
-    background-color: #b3b3b3;
-  }
