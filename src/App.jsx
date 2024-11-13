@@ -8,6 +8,7 @@ import SingleMovie from "@/pages/SingleMovie/SingleMovie";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import SearchResult from "./pages/SearchResult/SearchResult";
 
 function App() {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -39,6 +40,7 @@ function App() {
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/watchlist" element={<WatchList />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
+          <Route path='/search-result' element={<SearchResult/>}></Route>
         </Routes>
       </main>
       <Footer></Footer>

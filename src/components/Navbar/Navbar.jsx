@@ -3,8 +3,8 @@ import { FaSearch } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "@/components/Navbar/Navbar.css";
-import "@/components/Navbar/searchbar.css";
 import { APP_FOLDER_NAME } from "@/globals/globals";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
   const [onSearch, setOnSearch] = useState(false);
@@ -219,37 +219,7 @@ const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
         </div>
         {/* Conditionally render the search container */}
         {onSearch && (
-          <div className={`search-container ${onSearch ? "active" : ""}`}>
-            <input
-              type="text"
-              placeholder="Search movies..."
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              className="search-input"
-              ref={searchInputRef}
-            />
-            {searchQuery && (
-              <button className="clear-search-btn" onClick={clearSearch}>
-                &times;
-              </button>
-            )}
-            {searchResults.length > 0 && searchFocused && (
-              <div className="search-results">
-                {searchResults.map((movie) => (
-                  <div
-                    key={movie.id}
-                    className="search-result-item"
-                    onMouseDown={() => handleSuggestionClick(movie.id)}
-                  >
-                    <i className="fa fa-search"></i>
-                    <span>{movie.title}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <SearchBar onSearchToggle={onSearchToggle}></SearchBar>
         )}
         <button
           className={`search-icon ${onSearch ? "active" : ""}`}

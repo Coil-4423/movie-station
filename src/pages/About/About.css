@@ -1,14 +1,18 @@
 /* src/components/About.css */
 .about {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;
-    background-color: black;
-    height:100%;
-    display: flex;
-    flex-direction: column;
-  }
+  flex-grow: 1; /* Allow it to fill the available height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  text-align: left;
+}
+
   
   .about h1 {
     font-size: 2.5rem;

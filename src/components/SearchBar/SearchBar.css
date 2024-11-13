@@ -136,11 +136,11 @@
 }
 
 /* Cancel Search Button (No specific changes needed here) */
-.cancel-search {
+.cancel-search-btn {
     margin-left: 10px; /* Ensure proper spacing between input and button */
     border-radius: 15px;
 }
-.cancel-search:hover{
+.cancel-search-btn:hover{
     transition: 0.25s;
     background-color: #b3b3b3;
 }
@@ -154,3 +154,108 @@
     display: flex;
 }
 
+.search-container {
+    display: none;
+    position: relative;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: #1c1c1e;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+  }
+  
+  /* Search container active state */
+  .search-container.active {
+    display: flex;
+    width: 50%; /* Adjust the width as needed */
+    max-width: 70%; /* Adjust the width as needed */
+    padding: 0 10px;
+  }
+  
+  /* Adjusted search input width */
+  .search-input {
+    width: 100%;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    transition: all 0.5s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+  }
+  
+  .clear-search-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .search-icon {
+    background-color: transparent;
+    color: white;
+    font-size: 24px;
+    padding: 0.25rem;
+    cursor: pointer;
+    z-index: 1003;
+    margin-right: 20px;
+  }
+  
+  .search-icon.active {
+    display: none;
+  }
+  
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1c1c1e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    max-height: fit-content;
+    overflow-y: auto;
+    z-index: 1004;
+  }
+  
+  .search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #3a3a3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .search-result-item:hover {
+    background-color: #2a2a2c;
+  }
+  
+  .search-result-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+  }
+  
+  .search-result-item i {
+    margin-right: 10px;
+  }
+  
+  .cancel-search-btn {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background-color: #1c1c1e;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .cancel-search-btn:hover {
+    background-color: #b3b3b3;
+  }

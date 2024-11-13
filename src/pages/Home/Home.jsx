@@ -8,7 +8,8 @@ const Home = ({ movieSection, setMovieSection }) => {
   const [movies, setMovies] = useState([]);
   const favMovies = useSelector((state) => state.favMovie.movies);
   const watchList = useSelector((state) => state.watchList.movies);
-
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const [loading,setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,17 +25,24 @@ const Home = ({ movieSection, setMovieSection }) => {
         const response = await axios.get(url, {
           params: { language: "en-US" },
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`, // Replace with your token
+            Authorization: `Bearer ${API_KEY}`, // Replace with your token
           },
         });
         setMovies(response.data.results);
+        setLoading(false);
+        console.log(response.data.results);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [movieSection]);
+
+  if(loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="movies">
@@ -71,7 +79,11 @@ const Home = ({ movieSection, setMovieSection }) => {
       <div className="movies-container">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-item">
-              <MovieCard movie={movie} favMovies={favMovies} watchList={watchList}></MovieCard>
+            <MovieCard
+              movie={movie}
+              favMovies={favMovies}
+              watchList={watchList}
+            ></MovieCard>
           </div>
         ))}
       </div>

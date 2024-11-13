@@ -114,7 +114,7 @@ export const WatchList = () => {
 
   return (
     <div className="movies">
-      <h1>watchList</h1>
+      <h1>Watch List</h1>
       {/* Sort dropdown */}
       <div className="sort-dropdown">
         <label htmlFor="sortCriteria">Sort by: </label>

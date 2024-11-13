@@ -13,7 +13,7 @@ import StarRating from "../StarRating/StarRating";
 
 const MovieCard = ({ movie, favMovies, watchList }) => {
   const dispatch = useDispatch();
-
+  
   const handleFavorite = (movie) => {
     if (!favMovies.some((item) => item.id === movie.id)) {
       dispatch(addToFavorite(movie));
@@ -95,9 +95,9 @@ const MovieCard = ({ movie, favMovies, watchList }) => {
               : "Add to watchlist"}
           </span>
           {watchList.some((item) => item.id === movie.id) ? (
-            <FaRegBookmark />
-          ) : (
             <FaBookmark />
+          ) : (
+            <FaRegBookmark />
           )}
         </div>
         {/* <Link to={`/movie/${movie.id}`} className="movie-card__info-link">
