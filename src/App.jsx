@@ -40,7 +40,7 @@ function App() {
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/watchlist" element={<WatchList />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
-          <Route path='/search-result' element={<SearchResult/>}></Route>
+          <Route path='/search-result/:query' element={<SearchResult/>}></Route>
         </Routes>
       </main>
       <Footer></Footer>

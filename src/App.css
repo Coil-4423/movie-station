@@ -5,6 +5,7 @@
   background-color: rgb(37, 37, 37);
   width:100%;
   min-height: 100vh;
+  color:white;
 }
 
 .main-content{
@@ -19,4 +20,19 @@
 
 p, h3{
   color:white;
+}
+
+.blurred-content {
+  filter: blur(8px);
+  pointer-events: none;
+  /* Disable interaction with blurred content */
+  transition: filter 0.3s ease;
+}
+
+.search.active+.blurred-content {
+  pointer-events: none;
+}
+
+.search.active {
+  z-index: 9999;
 }

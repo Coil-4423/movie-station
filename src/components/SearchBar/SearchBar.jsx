@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
 
-const SearchBar = ({ onSearchToggle }) => {
+const SearchBar = ({ onSearchToggle,offMenu }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -47,7 +47,8 @@ const SearchBar = ({ onSearchToggle }) => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page reload
     if (searchQuery.length > 0) {
-      navigate("/search-result", { state: { searchQuery, searchResults } });
+      offMenu();
+      navigate(`/search-result/${searchQuery}`, { state: { searchQuery, searchResults } });
       clearSearch();
     }
   };
@@ -61,12 +62,6 @@ const SearchBar = ({ onSearchToggle }) => {
     setSearchQuery("");
     setSearchResults([]);
     setSearchFocused(false);
-  };
-
-  const cancelSearch = () => {
-    clearSearch();
-    if (onSearchToggle) onSearchToggle(false); // Toggle the search off if applicable
-
   };
 
   // Focus the search input when active

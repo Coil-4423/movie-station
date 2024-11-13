@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { deleteFromWatchList } from "@/features/watchListSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { FaCheck } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa";
-import { FaInfoCircle } from "react-icons/fa";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import './WatchList.css';
-
+import { FaBookmark } from "react-icons/fa6";
+import { FaRegBookmark } from "react-icons/fa6";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
 export const WatchList = () => {
@@ -114,7 +111,7 @@ export const WatchList = () => {
 
   return (
     <div className="movies">
-      <h1>Watch List</h1>
+      <h1><FaRegBookmark />Watch List</h1>
       {/* Sort dropdown */}
       <div className="sort-dropdown">
         <label htmlFor="sortCriteria">Sort by: </label>

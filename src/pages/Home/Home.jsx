@@ -72,7 +72,6 @@ const Home = ({ movieSection, setMovieSection }) => {
           >
             Popular
           </button>
-          <div className="right-fade"></div>
         </div>
       </div>
 
