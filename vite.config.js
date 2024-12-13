@@ -6,8 +6,7 @@ import path from 'path'; // Import the path module for resolving paths
 export default defineConfig({
   base: '/movie-station/',
   build: {
-    outDir: 'movie-station'
-
+    outDir: 'dist'
   },
   plugins: [react()],
   resolve: {
