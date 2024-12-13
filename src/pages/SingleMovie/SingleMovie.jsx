@@ -9,12 +9,12 @@ import { FaPlus } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
+import "./SingleMovie.css";
 
 
 const SingleMovie = () => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
-  const [casts, setCasts] = useState(null);
   const dispatch = useDispatch();
   const favMovies = useSelector((state) => state.favMovie.movies);
   const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
@@ -44,44 +44,20 @@ const SingleMovie = () => {
           }
         );
         setMovie(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
       }
     };
 
-    const fetchCasts = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/credits`,
-          {
-            params: { language: "en-US" },
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2NiMWM0MTVkMWNjMTA3OTVhNGFkOWM4YjkyNmU2NSIsIm5iZiI6MTcyMTkyOTIxMi4xMDM0NDEsInN1YiI6IjY2ODgzNzQzNWQ1YWI2NGNlYzYxYTlmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2GCmTIGjgqcqcae8dOb9Js-B87fCTf1RJZXQ_kUQCO0`, // Replace with your token
-            },
-          }
-        );
-        setCasts(response.data.cast.slice(0, 4)); // Get only the first 4 cast members
-        console.log(response.data);
-      } catch (error) {
-        console.error("Error fetching cast details:", error);
-      }
-    };
-
     fetchMovie();
-    fetchCasts();
   }, [id]);
 
   if (!movie) return <div>Loading...</div>;
 
   return (
     <section
-      style={{
-        position: "relative",
-        padding: "20px",
-        color: "#fff",
-        overflow: "hidden",
-      }}
+
+      className="single-movie-background"
     >
       <div
         style={{
@@ -114,8 +90,8 @@ const SingleMovie = () => {
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
-              style={{ with: "200px", height: "300px", borderRadius: "10px" }}
-              className="movie-background"
+              
+              className="movie-poster"
             />
           </div>
           <div className="movie-detail" style={{ maxWidth: "600px" }}>
@@ -159,7 +135,6 @@ const SingleMovie = () => {
                       }
                     >
                       <FaXTwitter />
-                      <p>X</p>
                     </button>
                     <button
                       onClick={() =>
@@ -167,7 +142,6 @@ const SingleMovie = () => {
                       }
                     >
                       <FaFacebook />
-                      <p>Facebook</p>
                     </button>
                   </div>
                 )}
