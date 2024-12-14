@@ -9,6 +9,7 @@ const Home = ({ movieSection, setMovieSection }) => {
   const favMovies = useSelector((state) => state.favMovie.movies);
   const watchList = useSelector((state) => state.watchList.movies);
   const API_KEY = import.meta.env.VITE_API_KEY;
+  console.log(API_KEY);
   const [loading,setLoading] = useState(true);
 
   useEffect(() => {
