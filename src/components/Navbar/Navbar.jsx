@@ -3,7 +3,6 @@ import { FaSearch } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "@/components/Navbar/Navbar.css";
-import { APP_FOLDER_NAME } from "@/globals/globals";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
