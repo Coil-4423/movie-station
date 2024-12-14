@@ -4,7 +4,7 @@ import path from 'path'; // Import the path module for resolving paths
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/movie-station',
+  base: '/',
   build: {
     outDir: 'movie-station'
   },
