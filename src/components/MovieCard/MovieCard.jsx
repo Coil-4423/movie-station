@@ -100,11 +100,6 @@ const MovieCard = ({ movie, favMovies, watchList }) => {
             <FaRegBookmark />
           )}
         </div>
-        {/* <Link to={`/movie/${movie.id}`} className="movie-card__info-link">
-          <span title="More Information">
-            <FaInfoCircle />
-          </span>
-        </Link> */}
       </div>
     </div>
   );
