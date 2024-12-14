@@ -3,7 +3,7 @@
   flex-grow: 1; /* Allow it to fill the available height */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;

@@ -1,10 +1,15 @@
 .single-movie {
+    position: relative;
+    width:100%;
+    height:100%;
+    z-index: 2;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     /* background-color: aqua; */
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width:768px) {
     .single-movie {
         display: flex;
         flex-direction: row;
@@ -17,10 +22,23 @@
     .movie-poster{
         max-height:36rem;
     }
+    
+    .single-movie-background {
+        position: relative;
+        width: 100%;
+        min-height:100vh;
+        /* padding: 20px; */
+        color: #fff;
+        overflow: hidden;
+    }
+
+    .movie-detail{
+        padding:2rem;
+    }
 }
 
 .single-img {
-    margin: 0 2rem;
+    margin: 0 1rem;
 }
 
 .movie-detail .buttons {
@@ -28,8 +46,10 @@
 }
 
 .single-movie-background {
-    /* position: relative; */
-    padding: 20px;
+    position: relative;
+    width: 100%;
+    height:100%;
+    /* padding: 20px; */
     color: #fff;
     overflow: hidden;
 }
@@ -37,6 +57,8 @@
 .movie-poster {
     width: 100%;
     border-radius: 10px;
+    min-width: 280px;
+    margin: 1rem 0;
 }
 
 .overview{
@@ -45,7 +67,7 @@
 }
 
 .movie-detail{
-    padding-left:1rem;
+    padding:1rem;
 }
 
 .genres{
@@ -69,6 +91,9 @@
     display: flex;
     flex-direction: column;
     position:absolute;
+    z-index: 2;
+    bottom:1rem;
+    left:1rem;
 }
 
 .share-content button{
@@ -77,7 +102,9 @@
     align-items: center;
     flex-direction: row;
     padding: 1rem;
-    z-index: 2;
-    top:1rem;
-    right:1rem;
+ 
+}
+
+.buttons{
+    cursor:pointer;
 }
