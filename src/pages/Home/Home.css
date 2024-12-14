@@ -19,21 +19,21 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  margin: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
 /* Active Button */
 .movies-section button.active {
-  background-color: #007bff;
+  background-color: #ff004c;
   color: #fff;
-  border-color: #007bff;
+  border-color: #ff004c;
 }
 
 /* Hover Effect for Buttons */
 .movies-section button:hover {
-  background-color: #007bff;
+  background-color: #ff5689;
   color: #fff;
 }
 

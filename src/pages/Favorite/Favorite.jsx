@@ -6,6 +6,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import './Favorite.css';
+import { FaHeart } from "react-icons/fa6";
 
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
@@ -113,7 +114,7 @@ export const Favorite = () => {
 
   return (
     <div className="movies">
-      <h1>Favorites</h1>
+      <h1><FaHeart/> Favorites</h1>
       {/* Sort dropdown */}
       <div className="sort-dropdown">
         <label htmlFor="sortCriteria">Sort by: </label>

@@ -84,7 +84,7 @@ const SingleMovie = () => {
           zIndex: 2,
         }}
       ></div>
-      <div style={{ position: "relative", zIndex: 3 }}>
+      {/* <div style={{ position: "absolute", zIndex: 3 }}> */}
         <div className="single-movie">
           <div className="single-img">
             <img
@@ -120,13 +120,13 @@ const SingleMovie = () => {
             <div className="buttons">
               <div onClick={handleFavorite} className="favbutton">
                 {favMovies.some((favMovie) => favMovie.id === movie.id) ? (
-                  <FaCheck />
+                  <FaCheck size={24}/>
                 ) : (
-                  <FaPlus />
+                  <FaPlus size={24}/>
                 )}
               </div>
               <div onClick={toggleShareDropdown} className="sharebutton">
-                <IoMdShare />
+                <IoMdShare size={24}/>
                 {shareDropdownOpen && (
                   <div className="share-content">
                     <button
@@ -158,7 +158,7 @@ const SingleMovie = () => {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </section>
   );
 };

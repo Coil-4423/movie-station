@@ -12,7 +12,6 @@ import { APP_FOLDER_NAME } from "./globals/globals";
 // Use createRoot instead of ReactDOM.render
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <BrowserRouter basename={APP_FOLDER_NAME ? `/${APP_FOLDER_NAME}/` : '/'}> */}
     <BrowserRouter>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
