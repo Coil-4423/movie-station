@@ -138,8 +138,8 @@ const Navbar = ({ onSearchToggle, setMovieSection, onMenuToggle }) => {
             <>
               <IoIosMenu className="menu-icon" onClick={toggleMenu} />
               <div className="navbar-logo">
-                <a href={`/${APP_FOLDER_NAME}`}>
-                  <img src={`/${APP_FOLDER_NAME}/ms.svg`} alt="Logo" />
+                <a href='/'>
+                  <img src='/ms.svg' alt="Logo" />
                 </a>
               </div>
               <div
