@@ -6,8 +6,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store/store';
 import App from './App';
 import './index.css';
-import { APP_FOLDER_NAME } from "./globals/globals";
-
 
 // Use createRoot instead of ReactDOM.render
 ReactDOM.createRoot(document.getElementById('root')).render(
